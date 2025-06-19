@@ -1,0 +1,7 @@
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\bin\Debug\Solutions.exe.config
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\bin\Debug\Solutions.exe
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\bin\Debug\Solutions.pdb
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\obj\Debug\Solutions.csproj.AssemblyReference.cache
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\obj\Debug\Solutions.csproj.CoreCompileInputs.cache
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\obj\Debug\Solutions.exe
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\1st Assignment\Solutions\Solutions\obj\Debug\Solutions.pdb
