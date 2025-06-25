@@ -1,0 +1,7 @@
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\bin\Debug\Inheritance.exe.config
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\bin\Debug\Inheritance.exe
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\bin\Debug\Inheritance.pdb
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\obj\Debug\Inheritance.csproj.AssemblyReference.cache
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\obj\Debug\Inheritance.csproj.CoreCompileInputs.cache
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\obj\Debug\Inheritance.exe
+C:\Users\nithinkumarv\InfiniteTraining\CSharp\Assignments\Assignment 3\Inheritance\Inheritance\obj\Debug\Inheritance.pdb
