@@ -9,6 +9,7 @@ namespace Inheritance
     
     class Saledetails
     {
+        //Since we need to display them in static method without object,I am making the fields static
         static int SalesNo;
         static int ProductNo;
         static double Price;

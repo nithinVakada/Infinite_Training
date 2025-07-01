@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40F1D2D4-ADF4-471F-A2EE-7FFF8780E9C6}</ProjectGuid>
+    <ProjectGuid>{78333C14-1418-44B7-9274-310FD47294A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CC1</RootNamespace>
-    <AssemblyName>CC1</AssemblyName>
+    <RootNamespace>Assignment4</RootNamespace>
+    <AssemblyName>Assignment4</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CC1.LargestOfThreeNumbers</StartupObject>
+    <StartupObject>Assignment4.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,9 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExchangeFirstAndLastChar.cs" />
-    <Compile Include="LargestOfThreeNumbers.cs" />
-    <Compile Include="RemoveCharAtPos.cs" />
+    <Compile Include="MobilePhoneEvents.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
