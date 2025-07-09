@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40F1D2D4-ADF4-471F-A2EE-7FFF8780E9C6}</ProjectGuid>
+    <ProjectGuid>{B0E0B4D2-0046-4AD0-ABE5-C1E9D13131A9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CC1</RootNamespace>
-    <AssemblyName>CC1</AssemblyName>
+    <RootNamespace>CodeChallenge3</RootNamespace>
+    <AssemblyName>CodeChallenge3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CC1.ExchangeFirstAndLastChar</StartupObject>
+    <StartupObject>CodeChallenge3.Delegates</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExchangeFirstAndLastChar.cs" />
-    <Compile Include="LargestOfThreeNumbers.cs" />
-    <Compile Include="RemoveCharAtPos.cs" />
+    <Compile Include="AppendText.cs" />
+    <Compile Include="CricketScores.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
