@@ -35,15 +35,20 @@ namespace CodeChallenge3
 
     class Delegates
         {
-            public static void PerformOperation(CalculatorDelegate operation, int x, int y, string operationName)
-            {
-                int result = operation(x, y);
-                Console.WriteLine($"{operationName} of {x} and {y} is: {result}");
-            }
+        public static void PerformOperation(CalculatorDelegate operation, int x, int y, string operationName)
+        {
+            int result = operation(x, y);
+            Console.WriteLine($"{operationName} of {x} and {y} is: {result}");
+        }
 
-            static void Main(string[] args)
+        static void Main(string[] args)
             {
-                bool exit = false;
+
+            //CalculatorDelegate add = new CalculatorDelegate(Calculator.Add);
+            //CalculatorDelegate subtract = new CalculatorDelegate(Calculator.Subtract);
+            //CalculatorDelegate multiply = new CalculatorDelegate(Calculator.Multiply);
+
+            bool exit = false;
 
                 while (!exit)
                 {
@@ -71,13 +76,16 @@ namespace CodeChallenge3
                     switch (choice)
                     {
                         case "1":
-                            PerformOperation(Calculator.Add, num1, num2, "Addition");
+                        PerformOperation(Calculator.Add, num1, num2, "Addition");
+                          // add(num1, num2);
                             break;
                         case "2":
-                            PerformOperation(Calculator.Subtract, num1, num2, "Subtraction");
+                        PerformOperation(Calculator.Subtract, num1, num2, "Subtraction");
+                        //subtract(num1, num2);
                             break;
                         case "3":
-                            PerformOperation(Calculator.Multiply, num1, num2, "Multiplication");
+                          PerformOperation(Calculator.Multiply, num1, num2, "Multiplication");
+                        //multiply(num1, num2);
                             break;
                         default:
                             Console.WriteLine("Invalid choice. Please select a valid option.");
