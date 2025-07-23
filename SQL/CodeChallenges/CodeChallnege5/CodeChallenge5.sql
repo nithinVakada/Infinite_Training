@@ -28,6 +28,7 @@ CREATE TABLE Employee1 (
     DOJ date
 );
 
+delete from Employee1
 -- Begin transaction
 BEGIN TRANSACTION;
 
@@ -45,7 +46,7 @@ SAVE TRANSACTION Trans1;
 
 -- c. Delete first row
 DELETE FROM Employee1 WHERE EmpNo = 103;
-
+select * from Employee1
 ROLLBACK TRANSACTION Trans1;
 
 COMMIT;
