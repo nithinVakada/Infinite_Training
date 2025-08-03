@@ -34,11 +34,6 @@ using System.Threading.Tasks;
 
 namespace Assignment1
 {
-    
-      
-      
-   
-
         public class Employee
         {
             public int EmployeeID { get; set; }
@@ -115,7 +110,7 @@ namespace Assignment1
                 // 8. Display total number of employee whose designation is not “Associate”
 
                 Console.WriteLine($"8. Employees whose designation is not Associate: {empList.Count(e => e.Title != "Associate")}");
-                Console.WriteLine();
+                
 
                 // 9. Display total number of employee based on City
 
@@ -123,12 +118,12 @@ namespace Assignment1
                     .GroupBy(emp => emp.City)
                     .Select(g => new { city = g.Key, Count = g.Count() });
 
-                Console.WriteLine("9. Total number of employees based on City:");
+                Console.WriteLine("\n9. Total number of employees based on City:");
                 foreach (var x in totalCity)
                 {
                     Console.WriteLine($"The city is {x.city} and the count is {x.Count}");
                 }
-                Console.WriteLine();
+                
 
                 // 10. Display total number of employee based on city and title
 
@@ -136,26 +131,24 @@ namespace Assignment1
                     .GroupBy(emp => new { emp.City, emp.Title })
                     .Select(g => new { city = g.Key.City, title = g.Key.Title, Count = g.Count() });
 
-                Console.WriteLine("10. Total number of employees based on City and Title:");
+                Console.WriteLine("\n10. Total number of employees based on City and Title:");
                 foreach (var x in TotalEmp)
                 {
                     Console.WriteLine($"The city is {x.city}, the title is {x.title}, the count is {x.Count}");
                 }
-                Console.WriteLine();
+               
 
                 // 11. Display total number of employee who is youngest in the list
 
                 var Youngest = empList.Max(emp => emp.DOB);
                 var Youngemp = empList.FindAll(emp => emp.DOB == Youngest);
 
-                Console.WriteLine("11.The Youngest Employee is:");
+                Console.WriteLine("\n11.The Youngest Employee is:");
                 foreach (var emp in Youngemp)
                 {
                     emp.Display();
                 }
-
-
-                Console.Read();
+                Console.ReadLine();
             }
         }
     }

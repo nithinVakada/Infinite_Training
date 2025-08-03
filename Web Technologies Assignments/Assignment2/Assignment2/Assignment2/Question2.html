@@ -1,0 +1,39 @@
+﻿
+<!--2. Create a CSS3 based button using style elements/properties-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .btn {
+            margin-left:500px;
+            margin-top:100px;
+            width:100px;
+            background: linear-gradient(to right, orange, red);
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+
+        .btn:hover {
+            transform: scale(1.07);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+
+ <button class="btn"> Click Me</button>
+</body>
+</html>

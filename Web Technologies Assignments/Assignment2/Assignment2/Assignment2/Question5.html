@@ -1,0 +1,134 @@
+﻿<!--5. Create a Tribute Page of a person with his or her image on the top of the page. Name the person
+   Below that give his/her achievements or any information about the person.
+
+ Hint(Use paragraphs,lists,images with CSS, background color, font style etc. to make it look good.-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tribute to MS Dhoni</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightblue;
+            
+        }
+
+        h2 {
+            margin-left: 300px;
+        }
+
+        .container {
+            width: 70%;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .top-half {
+            display: flex;
+            height: 50%;
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .top-content {
+            flex: 3;
+        }
+
+            .top-content h1 {
+                font-size: 36px;
+                color: #2e86c1;
+                margin-bottom: 0px;
+            }
+
+            .top-content p {
+                font-size: 18px;
+            }
+
+        .top-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+            .top-image img {
+                width: 100%;
+                max-width: 200px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            }
+
+        .bottom-half {
+            padding: 10px;
+        }
+
+            .bottom-half h2 {
+                color: #2e86c1;
+                margin-top: 0px;
+            }
+
+            .bottom-half p {
+                line-height: 1.7;
+                font-size: 18px;
+            }
+
+            .bottom-half ul {
+                margin-top: 20px;
+                padding-left: 20px;
+            }
+
+                .bottom-half ul li {
+                    margin-bottom: 12px;
+                    font-size: 17px;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-half">
+            <div class="top-content">
+                <h1>Mahendra Singh Dhoni</h1>
+                <p>“Captain Cool” – The Legend of Indian Cricket</p>
+
+            </div>
+            <div class="top-image">
+                <img src="https://img1.hscicdn.com/image/upload/f_auto/lsci/db/PICTURES/CMS/160300/160385.jpg" />
+            </div>
+        </div>
+
+        <div class="bottom-half">
+            <h2>About MS Dhoni</h2>
+            <p>
+                Mahendra Singh Dhoni, born on July 7, 1981, in Ranchi, Jharkhand, is one of the most iconic figures in Indian cricket. Known for his calm demeanor, sharp leadership, and finishing prowess, Dhoni rose from a small-town boy to become the most successful captain in Indian cricket history. He is admired for his tactical brilliance and ability to perform under pressure.
+            </p>
+
+            <h2>Major Achievements</h2>
+            <ul>
+                <li> Captained India to victory in the 2007 ICC T20 World Cup.</li>
+                <li> Led India to win the 2011 ICC Cricket World Cup with a memorable match-winning six.</li>
+                <li> Won the 2013 ICC Champions Trophy — the only captain to win all three major ICC tournaments.</li>
+                <li> Multiple Asia Cup titles (2010, 2016, and part of the 2018 winning squad).</li>
+                <li> Honored with Padma Shri (2009), Padma Bhushan (2018), and Major Dhyan Chand Khel Ratna Award (2008).</li>
+                <li> Holds the honorary rank of Lieutenant Colonel in the Indian Army.</li>
+                <li> Led Chennai Super Kings to multiple IPL titles, becoming one of the most successful IPL captains.</li>
+            </ul>
+
+            <h2>Legacy</h2>
+            <p>
+                MS Dhoni's legacy goes beyond statistics. He transformed Indian cricket with his leadership, inspired millions with his journey, and remains a symbol of humility and excellence. Even after retiring from international cricket in 2020, Dhoni continues to influence the game through the IPL and his mentorship.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
+

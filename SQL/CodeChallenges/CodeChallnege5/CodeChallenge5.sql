@@ -29,10 +29,10 @@ CREATE TABLE Employee1 (
 );
 
 delete from Employee1
--- Begin transaction
+
 BEGIN TRANSACTION;
 
--- a. Inserting 3 rows
+
 INSERT INTO Employee1 VALUES (101, 'Nithin', 30000, '2020-10-10'), (102, 'Kiran', 35000, '2019-03-25'), (103, 'Ram', 40000, '2018-07-07');
 
 select * from Employee1
@@ -41,7 +41,7 @@ UPDATE Employee1
 SET Sal = Sal * 1.15
 WHERE EmpNo = 102;
 
--- Savepoint after update
+
 SAVE TRANSACTION Trans1;
 
 -- c. Delete first row
