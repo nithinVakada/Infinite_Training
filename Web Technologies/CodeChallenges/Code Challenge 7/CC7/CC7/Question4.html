@@ -1,0 +1,49 @@
+﻿<!--4.Use and write the correct selector to hide all odd table rows in a table.-->
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title></title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <th>(row_no,col_no)</th>
+            <th>(row_no,col_no)</th>
+        </tr>
+        <tr>
+            <td>(1,1)</td>
+            <td>(1,2)</td>
+        </tr>
+        <tr>
+            <td>(2,1)</td>
+            <td>(2,2)</td>
+        </tr>
+        <tr>
+            <td>(3,1)</td>
+            <td>(3,2)</td>
+        </tr>
+        <tr>
+            <td>(4,1)</td>
+            <td>(4,2)</td>
+        </tr>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+
+            $('table tr:odd').hide();
+        });
+    </script>
+
+</body>
+</html>

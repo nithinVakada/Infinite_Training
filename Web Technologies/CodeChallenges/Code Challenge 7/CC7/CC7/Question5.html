@@ -1,0 +1,43 @@
+﻿<!--Find all h1 elements that are children of a div element and apply a background to them.-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title></title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        div {
+            margin: 10px;
+            border: 1px solid black;
+        }
+        h1 {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>a background color would be apploed for this heading</h1>
+    </div>
+
+    <div>
+        <p>No bg color would be applied for this paragraph,since it is not h1 </p>
+        <h1>a background color would be apploed for this heading also</h1>
+    </div>
+
+    <h1>This H1 is outside of a div,so no bg color would be applied</h1>
+
+    <script>
+        $(document).ready(function () {
+            $('div > h1').css('background-color', 'blue');
+        });
+    </script>
+
+</body>
+</html>

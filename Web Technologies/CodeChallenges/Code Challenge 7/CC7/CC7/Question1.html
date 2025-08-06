@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    1st number  : <input type="number" id="num1" /> <br />
+    2nd number : <input type="number" id="num2" />
+
+    <p id="result"></p>
+    <button onclick="Mul()">Multiply</button> 
+    <button onclick="Div()">Divide</button>
+
+    <script>
+
+        
+        function Mul()
+        {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var res = document.getElementById("result");
+            res.innerHTML = "The result is "+num1*num2;
+        }
+
+        function Div()
+        {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var res = document.getElementById("result");
+            res.innerHTML = "The result is " + (num1 / num2);
+        }
+
+
+    </script>
+</body>
+</html>

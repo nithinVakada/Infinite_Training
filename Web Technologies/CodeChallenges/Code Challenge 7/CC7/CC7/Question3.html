@@ -1,0 +1,25 @@
+﻿<!--Write a JavaScript program that creates a button and add a click event listener to log a message when it's clicked.-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+    <button id="btn" style="padding: 10px; background-color: red; color:white; cursor: pointer; border-radius:10px; margin-left:50%;
+margin-top:25%">
+        Click Me
+    </button>
+
+    <script>
+        var button = document.getElementById("btn");
+        button.addEventListener("click", function () { console.log("Button is clicked") })
+    </script>
+
+</body>
+</html>
