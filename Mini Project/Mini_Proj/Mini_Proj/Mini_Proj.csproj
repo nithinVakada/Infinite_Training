@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4EF564EB-729C-4740-A05C-49E79760E8DB}</ProjectGuid>
+    <ProjectGuid>{A223317C-E0C7-4B3B-BE7A-EDD61D10C4D7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CC7</RootNamespace>
-    <AssemblyName>CC7</AssemblyName>
+    <RootNamespace>Mini_Proj</RootNamespace>
+    <AssemblyName>Mini_Proj</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,16 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Question1.html" />
-    <Content Include="Question2.html" />
-    <Content Include="Question3.html" />
-    <Content Include="Question4.html" />
-    <Content Include="Question5.html" />
-    <Content Include="Question6.html" />
-    <Content Include="Question7.html" />
-    <Content Include="Question8.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
