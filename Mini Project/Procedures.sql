@@ -98,10 +98,10 @@ create or alter proc proc_BookTickets
 		select @train_no=bk.train_no,@class_id=bk.class_id from Bookings bk 
 		  where bk.Booking_id=@bookingID
 
-		Update Bookings set Seats_booked=Seats_booked - @seats_ToGet_Cancelled 
+		Update Bookings set Seats_booked=Seats_booked  - @seats_ToGet_Cancelled 
 		  where Booking_id=@bookingID
 
-		Update Train_Class set Seats_Available = Seats_Available - @seats_ToGet_Cancelled
+		Update Train_Class set Seats_Available = Seats_Available + @seats_ToGet_Cancelled
 		  where Train_No=@train_no and Class_Id=@class_id;
 
 		declare @cost int,@refund int
@@ -121,3 +121,55 @@ create or alter proc proc_BookTickets
 
 exec proc_CancelTickets 'Nithin',2,1
 
+CREATE TRIGGER inactiveTrain
+ON Trains
+Instead of delete
+AS
+BEGIN
+    UPDATE t
+    SET t.status = 'Inactive'
+    FROM train_class t 
+	inner join inserted i on t.Train_No = i. Train_No
+END
+
+CREATE or alter TRIGGER inactiveTrain
+ON Trains
+INSTEAD OF DELETE
+AS
+BEGIN
+    -- Mark related Train_Class entries as inactive
+    UPDATE tc
+    SET tc.Status = 'Inactive'
+    FROM Train_Class tc
+    INNER JOIN deleted d ON tc.Train_No = d.Train_No;
+
+	  UPDATE t
+    SET t.Status = 'Inactive'
+    FROM Trains t
+    INNER JOIN deleted d ON t.Train_No = d.Train_No;
+
+    -- Optionally: mark related Bookings as inactive
+    UPDATE b
+    SET b.Status = 'Inactive'
+    FROM Bookings b
+    INNER JOIN deleted d ON b.Train_No = d.Train_No;
+END;
+
+create or alter proc sp_Reactivate @trainno int
+as begin
+	if not exists (Select 1 from trains where train_no = @trainno)
+	begin
+		raiserror('Train doesnot exists',16,1)
+		return
+	end
+	if((select status from trains where train_no = @trainno) = 'active')
+	begin
+		raiserror('Train is already activated',16,1)
+		return
+	end
+	update trains set status = 'active' where train_no = @trainno
+	update train_class set status = 'active' where train_no = @trainno
+	update bookings set status = 'active' where train_no = @trainno
+end
+
+exec sp_Reactivate 101003

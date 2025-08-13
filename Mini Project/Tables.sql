@@ -20,6 +20,7 @@ Create Table Train_Class
   Class_Id Int References Class(Class_Id),
   Seats_Available Int,
   Cost_Per_Seat Int,
+  
   Primary Key(Train_No,Class_ID)
 );
 
@@ -84,6 +85,13 @@ select * from Trains;
 select * from Users;
 select * from Cancellations;
 
+alter  table Trains add  Status Varchar(10) default 'Active'
+
+delete from Trains where Train_No = 12345
+
+update Trains set Status='Active' 
+
+update Bookings set Seats_booked=0 where Seats_booked=-1
 
 
 
