@@ -17,7 +17,7 @@ namespace Mini_Proj
         {
            
             Console.WriteLine("*************** Welcome To E-Tikceting-Platform ************");
-           // GetSeatsAvailable();
+          
             bool do_looping = true;
             while(do_looping)
             {
@@ -53,9 +53,11 @@ namespace Mini_Proj
                         string customer_username = Console.ReadLine();
                         Console.WriteLine("Enter Password");
                         string customer_password = Console.ReadLine();
-                        if (AuthenticateUser(customer_username, customer_password))
+                        string name = AuthenticateUser(customer_username, customer_password);
+                        if (AuthenticateUser(customer_username, customer_password)!=null)
                         {
-                            UserMenu();
+                            Console.WriteLine("\n Welcome {0}",name);
+                            UserMenu(name);
                         }
                         else
                         {
@@ -142,7 +144,8 @@ namespace Mini_Proj
                 Console.WriteLine("4. Delete Train");
                 Console.WriteLine("5.View Trains");
                 Console.WriteLine("6.Reactivate Train");
-                Console.WriteLine("7. Logout");
+                Console.WriteLine("7.Check Seats Availability");
+                Console.WriteLine("8. Logout");
                 Console.Write("Enter your choice: ");
                 int Admin_choice = int.Parse(Console.ReadLine());
 
@@ -164,13 +167,15 @@ namespace Mini_Proj
                         break;
                     case 6:ReactivateTrain();
                         break;
+                    case 7: GetSeatsAvailable();
+                        break;
                     default:return;
                 }
             }
 
         }
 
-        static bool AuthenticateUser(string Username, string Password)
+        static string AuthenticateUser(string Username, string Password)
         {
             SqlConnection con = new SqlConnection(connect);
             con.Open();
@@ -181,11 +186,11 @@ namespace Mini_Proj
 
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
-                return true;
-            return false;
+                return Username;
+            return null;
         }
 
-        static void UserMenu()
+        static void UserMenu(string name)
         {
             while (true)
             {
@@ -193,8 +198,9 @@ namespace Mini_Proj
                 Console.WriteLine("1. View Trains");
                 Console.WriteLine("2. Book Tickets");
                 Console.WriteLine("3. Cancellation of Tickets");
-                Console.WriteLine("4.Check Seats Availability");
-                Console.WriteLine("5.Logout");
+                Console.WriteLine("4. Check Seats Availability");
+                Console.WriteLine("5. View My Bookings");
+                Console.WriteLine("6.Logout");
                 Console.Write("Enter your choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 
@@ -202,10 +208,11 @@ namespace Mini_Proj
                     switch (choice)
                     {
                         case 1: ViewTrains(); break;
-                        case 2: BookTickets(); break;
-                        case 3: CancelTickets(); break;
+                        case 2: BookTickets(name); break;
+                        case 3: CancelTickets(name); break;
                         case 4: GetSeatsAvailable();break;
-                        case 5: return;
+                        case 5:ViewMyBookings(name);break;
+                        case 6: return;
                         default: Console.WriteLine("Invalid choice."); break;
                     }      
             }
@@ -359,51 +366,98 @@ namespace Mini_Proj
 
         }
 
+        //static void GetSeatsAvailable()
+        //{
+        //    Console.Write("Enter Train Number: ");
+        //    int trainNo = int.Parse(Console.ReadLine());
+
+        //    Console.Write("Class ID (1. First AC, 2. Second AC, 3. Third AC, 4. Sleeper): ");
+        //    int classId = int.Parse(Console.ReadLine());
+
+            
+
+        //    using (SqlConnection conn = new SqlConnection(connect))
+        //    {
+        //        string query = "SELECT Seats_Available FROM Train_Class WHERE Train_No = @TrainNo AND Class_Id = @ClassId";
+
+        //        using (SqlCommand cmd = new SqlCommand(query, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@TrainNo", trainNo);
+        //            cmd.Parameters.AddWithValue("@ClassId", classId);
+
+        //            conn.Open();
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    int seatsAvailable = reader.GetInt32(0);
+        //                    Console.WriteLine($"Seats Available: {seatsAvailable}");
+        //                }
+        //                else
+        //                {
+        //                    Console.WriteLine("No data found for the given Train Number and Class ID.");
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
         static void GetSeatsAvailable()
         {
             Console.Write("Enter Train Number: ");
             int trainNo = int.Parse(Console.ReadLine());
 
-            Console.Write("Class ID (1. First AC, 2. Second AC, 3. Third AC, 4. Sleeper): ");
-            int classId = int.Parse(Console.ReadLine());
-
             
+            SqlDataReader reader = null;
 
-            using (SqlConnection conn = new SqlConnection(connect))
+            try
             {
-                string query = "SELECT Seats_Available FROM Train_Class WHERE Train_No = @TrainNo AND Class_Id = @ClassId";
+                con = new SqlConnection(connect);
+                string query = @"
+            SELECT TC.Class_Id, C.Class_Name, TC.Seats_Available
+            FROM Train_Class TC
+            JOIN Class C ON TC.Class_Id = C.Class_Id
+            WHERE TC.Train_No = @TrainNo";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@TrainNo", trainNo);
+
+                con.Open();
+                reader = cmd.ExecuteReader();
+
+                Console.WriteLine("\nSeats Availability:");
+                while (reader.Read())
                 {
-                    cmd.Parameters.AddWithValue("@TrainNo", trainNo);
-                    cmd.Parameters.AddWithValue("@ClassId", classId);
-
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            int seatsAvailable = reader.GetInt32(0);
-                            Console.WriteLine($"Seats Available: {seatsAvailable}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("No data found for the given Train Number and Class ID.");
-                        }
-                    }
+                    Console.WriteLine($"Class: {reader["Class_Name"]} (ID: {reader["Class_Id"]}) - Seats Available: {reader["Seats_Available"]} ");
                 }
+
+                if (!reader.HasRows)
+                {
+                    Console.WriteLine("No seat availability found for the given Train Number.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                 con.Close();
             }
         }
 
 
-        static void BookTickets()
+
+        static void BookTickets(string name)
         {
             cmd = new SqlCommand("proc_BookTickets", con);
             con.Open();
 
             Console.WriteLine("\n Enter the following details to book your ticekts");
-            Console.WriteLine("Enter Passenger Name");
-            string userName = Console.ReadLine();
+           // Console.WriteLine("Enter Passenger Name");
+            // string userName = Console.ReadLine();
+            string userName = name;
             Console.WriteLine("Train no:");
             int trainNo = int.Parse(Console.ReadLine());
             Console.WriteLine("Class ID : ");
@@ -457,14 +511,15 @@ namespace Mini_Proj
             con.Close();
         }
 
-        static void CancelTickets()
+        static void CancelTickets(string name)
         {
             try
             {
                
                 Console.WriteLine("\nEnter Cancellation Details");
-                Console.Write("Customer Name: ");
-                string user_name = Console.ReadLine();
+                //Console.Write("Customer Name: ");
+                //string user_name = Console.ReadLine();
+                string user_name = name;
                 Console.Write("Booking ID: ");
                 int bookingId=int.Parse(Console.ReadLine());  ;
                 Console.Write("Seats to Cancel: ");
@@ -495,6 +550,59 @@ namespace Mini_Proj
 
 
         }
+
+        public static void ViewMyBookings(string customerName)
+        {
+            
+            SqlDataReader reader = null;
+
+            try
+            {
+                
+                con = new SqlConnection(connect);
+                con.Open();
+
+                // Step 1: Get Cust_Id from Users table
+                string getCustIdQuery = "SELECT User_Id FROM Users WHERE User_Name = @UserName";
+                cmd = new SqlCommand(getCustIdQuery, con);
+                cmd.Parameters.AddWithValue("@UserName", customerName);
+                object result = cmd.ExecuteScalar();
+
+                if (result == null)
+                {
+                    Console.WriteLine("Customer not found.");
+                    return;
+                }
+
+                int custId = Convert.ToInt32(result);
+
+                // Step 2: Call stored procedure
+                cmd = new SqlCommand("ViewMyBookings", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@CustId", custId);
+
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Console.WriteLine($"Booking ID: {reader["Booking_id"]}, Train No: {reader["Train_No"]}, Train Name: {reader["Train_Name"]}, " +
+                                      $"Class: {reader["Class_Name"]}, Booking Date: {reader["Date_Of_Booking"]}, Travel Date: {reader["Date_Of_Travel"]}, " +
+                                      $"Seats: {reader["Seats_booked"]}, Total Cost: {reader["Total_Cost"]}, Status: {reader["Status"]}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (reader != null) reader.Close();
+                con.Close();
+            }
+        }
+
+
 
 
     }

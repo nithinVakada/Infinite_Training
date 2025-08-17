@@ -85,6 +85,15 @@ create or alter proc proc_BookTickets
 	   declare @user_id int;
 	   select @user_id=User_Id from Users where User_Name=@user_name;
 
+	   
+
+    IF NOT EXISTS ( SELECT 1 FROM Bookings  WHERE Booking_id = @bookingID AND Cust_Id = @user_id)
+    Begin
+        select 'Unauthorized cancellation attempt. Booking does not belong to user.' as Message;
+        return;
+    end
+
+
 	   declare @seats_booked int;
 	   select @seats_booked=Seats_booked from bookings
 	      where Cust_Id=@user_id and Booking_id=@bookingID;
@@ -173,3 +182,17 @@ as begin
 end
 
 exec sp_Reactivate 101003
+
+
+create  or alter procedure ViewMyBookings
+    @CustId int
+as
+begin
+    select B.Booking_id, B.Train_No, B.Date_Of_Booking, B.Date_Of_Travel, 
+           B.Seats_booked, B.Total_Cost, B.Status, 
+           T.Train_Name, C.Class_Name 
+    from Bookings B
+    JOIN Trains T ON B.Train_No = T.Train_No
+    JOIN Class C ON B.Class_Id = C.Class_Id
+    where B.Cust_Id = @CustId and B.Status='Active'
+end
