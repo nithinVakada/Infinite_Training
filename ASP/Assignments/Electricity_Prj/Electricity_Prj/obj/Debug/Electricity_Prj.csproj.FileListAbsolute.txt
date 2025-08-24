@@ -1,0 +1,2 @@
+C:\Users\nithinkumarv\InfiniteTraining\ASP\Assignments\Electricity_Prj\Electricity_Prj\obj\Debug\Electricity_Prj.csproj.AssemblyReference.cache
+C:\Users\nithinkumarv\InfiniteTraining\ASP\Assignments\Electricity_Prj\Electricity_Prj\obj\Debug\Electricity_Prj.csproj.CoreCompileInputs.cache

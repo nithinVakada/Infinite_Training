@@ -20,6 +20,7 @@
             <br />
             <asp:Button ID="Button1" runat="server" Text="Get the Product Price" OnClick="Button1_Click" />
             <br />
+            <br />
             <asp:Label ID="LabelPrice" runat="server" Text="Label" ForeColor="#FF0066"></asp:Label>
         </div>
     </form>
