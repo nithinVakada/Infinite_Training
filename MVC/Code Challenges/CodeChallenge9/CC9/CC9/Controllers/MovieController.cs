@@ -89,7 +89,7 @@ namespace CC9.Controllers
         {
             if (!year.HasValue)
             {
-                return RedirectToAction("Index"); // Or show an error page
+                return RedirectToAction("Index"); 
             }
 
             var movies = _movieRepository.GetByYear(year.Value);
@@ -98,11 +98,16 @@ namespace CC9.Controllers
         }
 
         
-        public ActionResult ByDirector(string directorName)
+       
+
+        public ActionResult ByDirector(string director)
         {
-            var movies = _movieRepository.GetByDirector(directorName);
+            
+            var movies = _movieRepository.GetByDirector(director);
+            ViewBag.Director = director;
             return View(movies);
         }
+
 
     }
 }

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CC9.Models.Movie>
+
+@{
+    ViewBag.Title = "Movies By Director";
+}
+
+<h2>Search Movies By Director</h2>
+
+@using (Html.BeginForm("ByDirector", "Movie", FormMethod.Get))
+{
+    <label for="director">Enter Director Name:</label>
+    <input type="text" id="director" name="director" value="@(ViewBag.Director ?? "")" />
+    <input type="submit" value="Search" />
+}
+
+@if (Model != null && Model.Any())
+{
+    <h3>Movies Directed by @ViewBag.Director</h3>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Movie ID</th>
+                <th>Movie Name</th>
+                <th>Director Name</th>
+                <th>Date of Release</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@movie.Mid</td>
+                    <td>@movie.Moviename</td>
+                    <td>@movie.DirectorName</td>
+                    <td>@movie.DateofRelease.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.Director != null)
+{
+    <p>No movies found for director "@ViewBag.Director".</p>
+}
+
+
+

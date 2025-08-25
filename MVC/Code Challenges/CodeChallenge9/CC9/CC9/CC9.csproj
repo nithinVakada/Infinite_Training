@@ -252,6 +252,8 @@
     <Content Include="Views\Movie\Create.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
     <Content Include="Views\Movie\Delete.cshtml" />
+    <Content Include="Views\Movie\ByYear.cshtml" />
+    <Content Include="Views\Movie\ByDirector.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
