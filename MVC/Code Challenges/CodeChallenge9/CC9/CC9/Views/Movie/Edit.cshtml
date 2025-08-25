@@ -1,0 +1,39 @@
+﻿@model CC9.Models.Movie
+
+<h2>Edit Movie</h2>
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Mid)
+
+    <div>
+        <label>Movie Name:</label><br />
+        @Html.TextBoxFor(m => m.Moviename)
+    </div>
+    <div>
+        <label>Director Name:</label><br />
+        @Html.TextBoxFor(m => m.DirectorName)
+    </div>
+    <div>
+        <label>Date of Release:</label><br />
+        @Html.TextBoxFor(m => m.DateofRelease, "{0:yyyy-MM-dd}", new { type = "date" })
+    </div>
+    <br />
+    <input type="submit" value="Save" />
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+
